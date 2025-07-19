@@ -25,7 +25,7 @@ function inserirTarefas(listaDeTarefas) {
                     <h5>${tarefa.titulo}</h5>
                     <p>${tarefa.descricao}</p>
                     <div class="actions">
-                        <i class='bxr bxs-trash'></i> 
+                        <i class='bxr bxs-trash' onclick="deletarTarefa(${tarefa.id})"></i> 
                     </div>
                 </li>
             `;
@@ -80,4 +80,14 @@ function pesquisarTarefas() {
             li.classList.remove('oculto');
         })
     }
+}
+
+function deletarTarefa(id) {
+    fetch(`http://localhost:3000/tarefas/${id}`, {
+        method: "DELETE",
+    })
+    .then(res => res.json())
+    .then(res => {
+        alert("Tarefa deletada com sucesso!");
+    })
 }
