@@ -57,3 +57,27 @@ function novaTarefa() {
     })
     
 }
+
+function pesquisarTarefas() {
+    let lis = document.querySelectorAll("ul li");
+    if (busca.value.length > 0) {
+        lis.forEach(li => {
+            if(!li.children[0].innerText.includes(busca.value)){
+                li.classList.add('oculto');
+            }
+            else{
+                li.classList.remove('oculto');
+            }
+            if(!li.children[1].innerText.includes(busca.value)){
+                li.classList.add('oculto');
+            }
+            else{
+                li.classList.remove('oculto');
+            }
+        })
+    } else {
+        lis.forEach(li => {
+            li.classList.remove('oculto');
+        })
+    }
+}
